@@ -6,14 +6,18 @@ using UnityEngine.AI;
 public class ZombieFresa : MonoBehaviour
 {
     [SerializeField] private float vida;
+    [SerializeField] private float fuerzaRebote = 5f;
+
     public Transform personaje;
     private NavMeshAgent agente;
     //private Animator anim;
     private BoxCollider2D colFresa;
     private ControladorEnemigos enemigos;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         agente = GetComponent<NavMeshAgent>();
         //anim = GetComponentInChildren<Animator>();
         colFresa = GetComponent<BoxCollider2D>();
@@ -38,6 +42,7 @@ public class ZombieFresa : MonoBehaviour
         {
             enemigos.EnemigoEliminado(1);
             Destroy(gameObject);
+            Retroceder();
         }
     }
 
@@ -49,5 +54,11 @@ public class ZombieFresa : MonoBehaviour
             Per.CausarHerida();
             //Destroy(collision.gameObject);
         }
+    }
+
+    private void Retroceder() 
+    { 
+        Vector2 direccion = (transform.position - personaje.position).normalized; 
+        rb.AddForce(direccion * fuerzaRebote, ForceMode2D.Impulse); 
     }
 }

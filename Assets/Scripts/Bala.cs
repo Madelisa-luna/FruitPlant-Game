@@ -7,6 +7,11 @@ public class Bala : MonoBehaviour
     [SerializeField] private float velocidad;
     [SerializeField] private float dano;
 
+    private void Start()
+    {
+        Invoke("DestruirBala", 3f);
+    }
+
     private void Update()
     {
         transform.Translate(Vector2.left * velocidad * Time.deltaTime);
@@ -58,6 +63,12 @@ public class Bala : MonoBehaviour
                 Debug.LogWarning("El objeto colisionado no tiene el componente ZombieFresa");
             }
         }
+
+    }
+
+    private void DestruirBala() 
+    { 
+        Destroy(gameObject); 
     }
 
     private void DestruirBala()

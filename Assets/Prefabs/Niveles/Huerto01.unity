@@ -53766,6 +53766,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ControladorEnemigos
       objectReference: {fileID: 0}
+    - target: {fileID: 5995215536897805297, guid: 6d360c10995c8db4a8f93c9ccdd3f698,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
