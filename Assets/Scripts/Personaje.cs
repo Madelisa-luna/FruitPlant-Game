@@ -89,6 +89,7 @@ public class Personaje : MonoBehaviour
             if (vidaPersonaje == 0)
             {
                 Debug.Log("Hemos muerto");
+                Destroy(gameObject);
             }
         }
     }

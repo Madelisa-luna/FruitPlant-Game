@@ -17,11 +17,6 @@ public class Bala : MonoBehaviour
         transform.Translate(Vector2.left * velocidad * Time.deltaTime);
     }
 
-    private void Start()
-    {
-        Invoke("DestruirBala", 3f);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("enemigoFresa"))
@@ -63,17 +58,25 @@ public class Bala : MonoBehaviour
                 Debug.LogWarning("El objeto colisionado no tiene el componente ZombieFresa");
             }
         }
+        else if (collision.CompareTag("enemigoFinal"))
+        {
+            ZombiePina enemigo = collision.GetComponent<ZombiePina>();
+            if (enemigo != null)
+            {
+                enemigo.RecibirDano(dano);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.LogWarning("El objeto colisionado no tiene el componente ZombieFresa");
+            }
+        }
 
     }
 
     private void DestruirBala() 
     { 
         Destroy(gameObject); 
-    }
-
-    private void DestruirBala()
-    {
-        Destroy(gameObject);
     }
 
 }
