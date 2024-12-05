@@ -90,7 +90,10 @@ public class Personaje : MonoBehaviour
             {
                 Debug.Log("Hemos muerto");
                 Destroy(gameObject);
+                FindAnyObjectByType<GameOver>().MostrarGameOver();
             }
         }
     }
+
+
 }

@@ -30,6 +30,7 @@ public class ZombiePina : MonoBehaviour
         vida -= dano;
         if (vida <= 0)
         {
+            FindAnyObjectByType<FinJuego>().FinalDeJuego();
             Destroy(gameObject);
         }
     }
@@ -39,6 +40,9 @@ public class ZombiePina : MonoBehaviour
         {
             Personaje Per = collision.GetComponent<Personaje>();
             Destroy(collision.gameObject);
+
+            //Mostrar GameOver
+            FindAnyObjectByType<GameOver>().MostrarGameOver();
         }
     }
 }
